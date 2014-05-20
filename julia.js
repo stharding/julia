@@ -178,20 +178,19 @@ function handle_left( e )
 
 function handle_mouse_down ( e ) {
   m_down = true;
-  ox = e.offsetX;
-  oy = e.offsetY;
+  ox = e.hasOwnProperty('offsetX') ? e.offsetX : e.layerX;
+  oy = e.hasOwnProperty('offsetY') ? e.offsetY : e.layerY;
 }
 
 var firstMouseMove = true;
-var ox, oy;
 function handle_mouse_move ( e ) 
 {
   if ( m_down ) {
-    var dx = ox - e.offsetX;
-    var dy = e.offsetY - oy;
+    var dx = ox - (e.offsetX==undefined?e.layerX:e.offsetX);
+    var dy = (e.offsetY==undefined?e.layerY:e.offsetY) - oy;
 
-    ox = e.offsetX;
-    oy = e.offsetY;
+    ox = e.offsetX==undefined?e.layerX:e.offsetX;
+    oy = e.offsetY==undefined?e.layerY:e.offsetY;
     if ( e.shiftKey ) {
       cRe += dx/100;
       cIm += dy/100;
