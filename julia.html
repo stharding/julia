@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Julia Set</title>
+  <script type = "text/javascript" src = "../Common/webgl-utils.js"></script>
+  <script type = "text/javascript" src = "../Common/initShaders2.js"></script>
+  <script type = "text/javascript" src = "../Common/MV.js"></script>
+  <script type="text/javascript" src="Julia.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+  <h2>Julia Set Explorer</h2>
+  <div style="width: 100%; overflow: hidden;">
+   <div id="left-canvas" style="width: 50%; float: left;">
+    <canvas id = "gl-canvas" class = "canv">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+   </div>
+   <div id="instructions" style="width: 40%; float: right;">
+      <h2>Instructions:</h2>
+      Check out the <a href="http://en.wikipedia.org/wiki/Julia_set">wiki</a> page on the Julia set to understand what is going on. <p></p>
+      You can manipulate the fractal in several ways:
+      <ul>
+        <li>Press the arrow keys (or click and drag with the mouse) to pan the fractal</li>
+        <li>Hold the shift key while pressing the "up" or "down" arrow keys (or scroll with the mouse wheel) to zoom in/out of the fractal</li>
+        <li>Hold the shift key while dragging the mouse to change the real and imaginary components of \(c\) in \(f_c(z) =  z^2 + c\)</li>
+        <li>press the number keys to change the number of iterations:
+          <ul>
+            <li>1  : 100 iterations</li>
+            <li>2  : 200 iterations</li>
+            <li>3  : 500 iterations</li>
+            <li>4  : 1000 iterations</li>
+            <li>5  : 2000 iterations</li>
+            <li>6  : 8000 iterations</li>
+            <li>'+': will increase the number of iterations by 100</li>
+            <li>'-': will decrease the number of iterations by 100</li>
+          </ul>
+        </li>
+      </ul>
+      It is best to navigate the fractal in one of the low iteration modes (e.g. 1 or 2) because this can be done in near real time. When you find a part of the fractal you want to see in more detail, that is the time to chose a higher iteration mode. <p></p>
+      Try out a different function \(f_c(z)\):<p></p>
+        <label>
+        <input type     = "radio"
+               id       = "f2"
+               name     = "change_fn"
+               value    = "2"
+               checked  = "checked" 
+               onchange = "changeFunction()"> \(f_c(z) =  z^2 + c\) </label><br>
+        <label>
+        <input type     = "radio"
+               id       = "f3"
+               name     = "change_fn"
+               value    = "3"
+               onchange = "changeFunction()"> \(f_c(z) =  z^3 + c\) </label><br>
+        <input type     = "radio"
+               id       = "f4"
+               name     = "change_fn"
+               value    = "4"
+               onchange = "changeFunction()"> \(f_c(z) =  z^4 + c\) </label><br>
+        <span style     = "padding-left: 2em"><p></p>
+        c = <span id="re_label">-0.7</span> + <span id="im_label">0.27015</span>i
+   </div>
+  </div>
+</body>
+</html>
