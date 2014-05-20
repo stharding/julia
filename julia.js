@@ -11,7 +11,7 @@ var canvas                               ,
     WIDTH                                ,
     re_label                             ,
     im_label                             ,
-    f2, f3, f4                           ,
+    f2, f3, f4, f5                       ,
     power      = 2                       ,
     x_factor   = 1                       ,
     y_factor   = 1                       ,
@@ -84,6 +84,7 @@ function init()
     f2       = document.getElementById( "f2" );
     f3       = document.getElementById( "f3" );
     f4       = document.getElementById( "f4" );
+    f5       = document.getElementById( "f5" );
 
     points = [
       vec2( -1,  1 ),
@@ -217,5 +218,6 @@ function changeFunction()
   if (f2.checked) power = 2.0
   if (f3.checked) power = 3.0
   if (f4.checked) power = 4.0
+  if (f5.checked) power = 5.0
   render()
 }

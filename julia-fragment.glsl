@@ -27,6 +27,9 @@ float julia( float x, float y ) {
     } else if ( power == 4.0 ) {
       xtemp = x*x*x*x - 6.0*x*x*y*y + y*y*y*y + cRe;
       y = 4.0*x*x*x*y - 4.0*x*y*y*y + cIm;
+    } else if ( power == 5.0 ) {
+      xtemp = x*x*x*x*x - 10.0 * x*x*x * y*y + 5.0 * x * y*y*y*y + cRe;
+      y = 5.0 * x*x*x*x * y - 10.0 * x*x * y*y*y + y*y*y*y*y + cIm;
     }
     x = xtemp;
     if((x * x + y * y) > 4.0 || i >= max) break;
