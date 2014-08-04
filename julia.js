@@ -196,7 +196,7 @@ function handle_mouse_move ( e )
       cIm += dy/100;
       re_label.innerHTML = cRe;
       im_label.innerHTML = cIm;
-    } else if ( e.ctrlKey ) {
+    } else if ( e.altKey ) {
       power[0] += dx/100;
       power[1] += dy/100;
     } else {
