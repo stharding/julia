@@ -12,7 +12,7 @@ var canvas                               ,
     re_label                             ,
     im_label                             ,
     f2, f3, f4, f5                       ,
-    power      = 2                       ,
+    power      = vec2(2, 0)              ,
     x_factor   = 1                       ,
     y_factor   = 1                       ,
     hslMode    = false                   ,
@@ -115,7 +115,7 @@ function render ()
   gl.uniform1f ( minXposition    , minX  );
   gl.uniform1f ( maxXposition    , maxX  );
   gl.uniform1f ( minYposition    , minY  );
-  gl.uniform1f ( powerPosition   , power );
+  gl.uniform2fv( powerPosition   , power );
   gl.bindBuffer( gl.ARRAY_BUFFER , vBuff );
   gl.drawArrays( gl.TRIANGLE_FAN , 0, points.length );
 }
@@ -196,6 +196,9 @@ function handle_mouse_move ( e )
       cIm += dy/100;
       re_label.innerHTML = cRe;
       im_label.innerHTML = cIm;
+    } else if ( e.ctrlKey ) {
+      power[0] += dx/100;
+      power[1] += dy/100;
     } else {
       cx += 4 * dx / (canvas.width  / scale );
       cy += 4 * dy / (canvas.height / scale );
@@ -214,9 +217,9 @@ function setWindow()
 
 function changeFunction()
 {
-  if (f2.checked) power = 2.0
-  if (f3.checked) power = 3.0
-  if (f4.checked) power = 4.0
-  if (f5.checked) power = 5.0
+  if (f2.checked) power = vec2(2.0, 0);
+  if (f3.checked) power = vec2(3.0, 0);
+  if (f4.checked) power = vec2(4.0, 0);
+  if (f5.checked) power = vec2(5.0, 0);
   render()
 }
