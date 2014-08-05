@@ -12,6 +12,7 @@ var canvas                               ,
     re_label                             ,
     im_label                             ,
     f2, f3, f4, f5                       ,
+    power_label                          ,
     power      = vec2(2, 0)              ,
     x_factor   = 1                       ,
     y_factor   = 1                       ,
@@ -38,6 +39,7 @@ window.onkeydown   = handle_on_key_down;
 function init()
 {
     if (first) canvas = document.getElementById( "gl-canvas" );
+    if (first) power_label = document.getElementById( "power" );
     var maxHeight = window.innerHeight * 0.9;
     var maxWidth  = window.innerWidth * 0.9;
     var dimension = maxHeight < maxWidth ? maxHeight : maxWidth;
@@ -199,6 +201,7 @@ function handle_mouse_move ( e )
     } else if ( e.altKey ) {
       power[0] += dx/100;
       power[1] += dy/100;
+      power_label.innerHTML = power[0] + " + i" + power[1];
     } else {
       cx += 4 * dx / (canvas.width  / scale );
       cy += 4 * dy / (canvas.height / scale );
